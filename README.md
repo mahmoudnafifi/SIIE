@@ -1,7 +1,5 @@
 # Sensor Independent Illumination Estimation for DNN Models
 *[Mahmoud Afifi](https://sites.google.com/view/mafifi)*<sup>1</sup> and *[Michael S. Brown](http://www.cse.yorku.ca/~mbrown/)*<sup>2</sup>
-
-
 <br></br><sup>1</sup>York University  <sup>2</sup>Samsung Research
 
 <img src="https://drive.google.com/uc?export=view&id=1wwu-vpAl1mh8qcXqvhTpJHGlxuaam-Me" style="width: 350px; max-width: 100%; height: auto" title="Click for the larger version." />
