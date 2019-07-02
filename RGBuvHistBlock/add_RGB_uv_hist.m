@@ -4,11 +4,11 @@ function [lgraph,lastLayer] = add_RGB_uv_hist(inputLayer,...
 %% Adding a RGB-uv histogram block to a network. 
 
 %% Description:
-% This histogram was originally used in "When Color Constancy Goes Wrong: 
-% Correcting Improperly White-Balanced Images (CVPR'19)". In this code, 
-% we use the same feature, but we an exponential kernel instead of the step
-% funciton. Using this kernel, we use two learnable paramters to control 
-% the contribution of each color channel and the smoothness of the 
+% This histogram feature was originally used in "When Color Constancy Goes 
+% Wrong: Correcting Improperly White-Balanced Images (CVPR'19)". In this 
+% code, we use the same feature, but we an exponential kernel instead of 
+% the step funciton. Using this kernel, we use two learnable paramters to
+% control the contribution of each color channel and the smoothness of the 
 % generated histogram bins. The histogram block is a differentiable unit 
 % that can be integrated into any network. Read our papers for more
 % information:
@@ -50,51 +50,53 @@ function [lgraph,lastLayer] = add_RGB_uv_hist(inputLayer,...
 
 %% Example:
 %     - Create a histogram block after an input layer:
-%             inputSize = 50;
-%             histSize = 31;
-%             inputlayer = imageInputLayer([inputSize inputSize 3],'Name','data', 'Normalization','none');
-%             im2doubleLayer = imdoubleLayer_('im2double','uint8');
+%             inputSize = 50; %input image side dimension (i.e., 50x50x3)
+%             histSize = 31; %histogram side dimension (i.e., 31x31x3)
+%             inputlayer = imageInputLayer([inputSize, inputSize, ...
+%             3],'Name','data', 'Normalization','none'); %no zerocentering applied
+%             im2doubleLayer = imdoubleLayer_('im2double','uint8'); %convert the uint values to fall in the range [0-1]
 %             in_layers = [inputlayer
 %                 im2doubleLayer];
-%             prefix = 'histBlock';
-%             first_layer_to_histBlock = 'im2double';
+%             prefix = 'histBlock'; %prefix added before each layer of the histogram block
+%             first_layer_to_histBlock = 'im2double'; %name of the input layer to the histogram block
 %             [lgraph,lastLayer] = add_RGB_uv_hist(in_layers,...
-%                 first_layer_to_histBlock,prefix,inputSize,histSize);
+%                 first_layer_to_histBlock,prefix,inputSize,histSize); 
 %             plot(lgraph);
 %
 %       
 %
 %     - Adding a histogram block to an existing layer graph object 'lgraph'
 %       without a skip connection:
-%             InputSize = 50;
-%             histSize = 31;
-%             inputlayer = imageInputLayer([InputSize InputSize 3],'Name','data', 'Normalization','none'); %Add a new input layer without a normalization applied to keep the original color values without changing. In this example, we assume the input images are uint8 50x50x3 images (you can modify the dimensions and type).
-%             im2doubleLayer = imdoubleLayer_('im2double','uint8');
+%             inputSize = 50; %input image side dimension (i.e., 50x50x3)
+%             histSize = 31; %histogram side dimension (i.e., 31x31x3)
+%             inputlayer = imageInputLayer([inputSize, inputSize, ...
+%                 3],'Name','data', 'Normalization','none'); %no zerocentering applied
+%             im2doubleLayer = imdoubleLayer_('im2double','uint8'); %convert the uint values to fall in the range [0-1]
 %             in_layers = [inputlayer
 %                 im2doubleLayer];
-%             first_layer_to_histBlock = 'im2double';
-%             firstLayerLgraph = lgraph.Layers(1).Name;
-%             prefix = 'histBlock';
+%             prefix = 'histBlock'; %prefix added before each layer of the histogram block
+%             first_layer_to_histBlock = 'im2double'; %name of the input layer to the histogram block
 %             [lgraph,lastLayer] = add_RGB_uv_hist(in_layers,...
-%                 first_layer_to_histBlock,prefix,InputSize,histSize,lgraph);
+%                 first_layer_to_histBlock,prefix,inputSize,histSize,lgraph);
+%             firstLayerLgraph = 'conv1';% name of the layer in `lgraph` object that you want to add after the histogram block output
 %             lgraph = connectLayers(lgraph,lastLayer,firstLayerLgraph);
+%
 %
 %
 %     - Adding a histogram block to an existing layer graph object 'lgraph' 
 %       with a skip connection:
-%             InputSize = 50;
-%             histSize = 31;
-%             inputlayer = imageInputLayer([InputSize InputSize 3],'Name','data', 'Normalization','none'); %Add a new input layer without a normalization applied to keep the original color values without changing. In this example, we assume the input images are uint8 50x50x3 images (you can modify the dimensions and type).
-%             im2doubleLayer = imdoubleLayer_('im2double','uint8');
+%             inputSize = 50; %input image side dimension (i.e., 50x50x3)
+%             histSize = 31; %histogram side dimension (i.e., 31x31x3)
+%             inputlayer = imageInputLayer([inputSize, inputSize, ...
+%                 3],'Name','data', 'Normalization','none'); %no zerocentering applied
+%             im2doubleLayer = imdoubleLayer_('im2double','uint8'); %convert the uint values to fall in the range [0-1]
 %             in_layers = [inputlayer
 %                 im2doubleLayer];
-%             first_layer_to_histBlock = 'im2double';
-%             firstLayerLgraph = lgraph.Layers(1).Name; %the name of the existing layer in lgraph that will be connected by the first layer before the histogram block
-%             prefix = 'histBlock';
+%             prefix = 'histBlock'; %prefix added before each layer of the histogram block
+%             first_layer_to_histBlock = 'im2double'; %name of the input layer to the histogram block
+%             firstLayerLgraph = 'conv1'; %name of the first layer of original network stream that comes after the input layer.
 %             [lgraph,lastLayer] = add_RGB_uv_hist(in_layers,...
-%                 first_layer_to_histBlock,prefix,InputSize,histSize,lgraph);
-%             [lgraph,lastLayer] = add_RGB_uv_hist(in_layers,...
-%             first_layer_to_histBlock,prefix,InputSize,histSize,lgraph,firstLayerLgraph);
+%             first_layer_to_histBlock,prefix,inputSize,histSize,lgraph,firstLayerLgraph);
 
 
 
