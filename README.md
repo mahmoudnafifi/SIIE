@@ -34,7 +34,7 @@ First, be sure that all images are in the raw-RGB linear space and the black lev
 In the given demo, we show the raw-RGB image after white-balancing and scaling it up by a constant factor to aid visualization. In the paper, we used the full camera pipeline in [A Software Platform for Manipulating the Camera Imaging Pipeline, ECCV'16](https://karaimer.github.io/camera-pipeline/) to render the image to the sRGB space with our estimated illuminant vector.
 
 #### Where can I find the training code?
-Currently, the training code is not provided. 
+Currently, the training code is not publicly available and will be released soon.
 
 
 ### Publication
