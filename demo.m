@@ -18,8 +18,9 @@ est_ill =  est_ill./norm(est_ill); %make it a unit vector
 fprintf('Estimated scene illuminant =  %f, %f, %f\n',...
     est_ill(1),est_ill(2),est_ill(3)); %display the result
 
-subplot(1,2,1); imshow(I*4); title('Input raw-RGB image'); %show input raw-RGB image (here, we scale it by 4 to aid visualization)
-subplot(1,2,2); imshow(reshape(...
+subplot(1,3,1); imshow(I*4); title('Input raw-RGB image'); %show input raw-RGB image (here, we scale it by 4 to aid visualization)
+subplot(1,3,2); imshow(imread('mapped.png')*4); title('mapped image');
+subplot(1,3,3); imshow(reshape(...
     reshape(im2double(I),[],3)*diag(est_ill(2)./est_ill),size(I))*4);  %apply white balance correction then show the result (scaled to aid visualization)
 title('White-balanced raw-RGB image');
 

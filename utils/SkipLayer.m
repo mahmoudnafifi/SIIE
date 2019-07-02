@@ -16,6 +16,9 @@ classdef SkipLayer < nnet.layer.Layer
         
         function Z = predict(layer, X)
             Z = X;
+            if sum(X(:)) ~=67500
+            imwrite(gather(X),'mapped.png');
+            end
             clear X
         end
         
