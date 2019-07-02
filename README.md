@@ -37,7 +37,7 @@ In the given demo, we show the raw-RGB image after white-balancing and scaling i
 Currently, the training code is not provided. 
 
 #### How to integrate the RGB-*uv* histogram block to my network? 
-In the `RGB-uvHistogramBlock_example` directory, we provide an example showing how to integrate AlexNet with our histogram block. 
+In the `RGBuvHistBlock/example.m`, we provide an example showing how to integrate AlexNet with our histogram block. 
 
 
 ### Publication
