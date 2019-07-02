@@ -30,7 +30,7 @@ Yes, our work propose to reduce the differences between camera sensor responses 
 #### How to report results of the trained models using a new set of raw-RGB images?
 First, be sure that all images are in the raw-RGB linear space and the black level/saturation normalization is correctly applied to all testing images. The input images should be stored as uint16 PNG files. Then, you can use any trained model for testing. You can report results of one model or the best, mean, and worst results. You can also use all trained models and use the averaged illuminant vectors for evaluation (ensemble model).
 
-#### Why does the demo show faint colors compared to what shown in the paper?
+#### Why does the demo show faint colors/dim images compared to what shown in the paper?
 In the given demo, we show the raw-RGB image after white-balancing and scaling it up by a constant factor to aid visualization. In the paper, we used the full camera pipeline in [A Software Platform for Manipulating the Camera Imaging Pipeline, ECCV'16](https://karaimer.github.io/camera-pipeline/) to render the image to the sRGB space with our estimated illuminant vector.
 
 #### Where can I find the training code?
