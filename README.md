@@ -23,13 +23,16 @@ Correcting Improperly White-Balanced Images, CVPR'19](http://cvil.eecs.yorku.ca/
 2. #### Can I test images captured by different camera sensors different than the camera sensors used for training (i.e., NUS, Gehler-Shi, and Cube/Cube+ datasets)?
 Yes, our work propose to reduce the differences between camera sensor responses (that is why mostly all of learning-based illuminant estimation models are sensor-dependent and cannot generalize well for new camera sensors -- see [On Finding Gray Pixels, CVPR'19](https://arxiv.org/pdf/1901.03198.pdf) for interesting experiments highlight this point as well). Our method, however, targets to work independently from the camera sensor. Read our paper for more details.
 
-3. #### How to report results of the trained models using a new dataset of raw-RGB images?
-First, be sure that all images are in the raw-RGB space and the black level/saturation normalization is correctly applied to all testing images. The input images should be stored as uint16 PNG files. Then, you can use any trained model for testing or you can use all trained models and either report the average of the obtained results or use the averaged illuminant vectors for evaluation (ensemble model).
+3. #### How to report results of the trained models using a new set of raw-RGB images?
+First, be sure that all images are in the raw-RGB linear space and the black level/saturation normalization is correctly applied to all testing images. The input images should be stored as uint16 PNG files. Then, you can use any trained model for testing. You can report results of one model or the best, mean, and worst results. You can also use all trained models and use the averaged illuminant vectors for evaluation (ensemble model).
 
-4. #### Where can I find the training code?
+4. ### Why does the demo show faint colors compared to what reported in the paper?
+In the given demo, we show the raw-RGB image after white-balancing and scaling it up by a constant factor to aid visualization. In the paper, we used the full camera pipeline in [A Software Platform for Manipulating the Camera Imaging Pipeline, ECCV'16](https://karaimer.github.io/camera-pipeline/) to render the image to the sRGB space with our estimated illuminant vector.
+
+5. #### Where can I find the training code?
 Currently, the training code is not provided. 
 
-5. #### How to integrate the RGB-*uv* histogram block to my network? 
+6. #### How to integrate the RGB-*uv* histogram block to my network? 
 In the `RGB-uvHistogramBlock_example` directory, we provide an example showing how to integrate AlexNet with our histogram block. 
 
 
