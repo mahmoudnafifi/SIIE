@@ -32,6 +32,8 @@ Currently, the training code is not publicly available and will be released soon
 #### How to integrate the RGB-*uv* histogram block into my network?
 Please check examples given in `RGBuvHistBlock/add_RGB_uv_hist.m`. If you will use the RGB-*uv* histogram block for sRGB images (e.g., JPEG images), you may need to tune the initalization of the scale and fall-ff parameters for better results with sRGB images -- the current intalization was used to work with linear raw-RGB images which are much darker than sRGB images. To tune these parameters, please change the initalization of the scale parameter `C` in `scaleLayer.m` (line 18) and the fall-off factor `sigma` in `ExponentialKernelLayer.m` (line 20). The files `scaleLayer.m` and `ExponentialKernelLayer.m` are located in `RGBuvHistBlock` directory. You can use the `predict` function in `histOutLayer.m` function for debugging.
 
+#### Note: The code was tested on Matlab 2018b and 2019a. It is expected to have some errors if you run Matlab 2019b or higher, as there are many updates in the nnet.layer.Layer class starting from Matlab 2019b. We will provide a source code compatible for Matlab 2019b or higher soon.
+
 ### [Project page](http://cvil.eecs.yorku.ca/projects/public_html/siie/index.html)
 
 ### Publication
