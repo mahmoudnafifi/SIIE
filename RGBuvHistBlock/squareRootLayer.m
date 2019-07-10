@@ -1,4 +1,4 @@
-%% squareRootLayer
+%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Copyright (c) 2019 Mahmoud Afifi
 % York University, Canada
