@@ -1,3 +1,24 @@
+%% AngularLossRegression
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Copyright (c) 2019 Mahmoud Afifi
+% York University, Canada
+% Email: mafifi@eecs.yorku.ca - m.3afifi@gmail.com
+% Permission is hereby granted, free of charge, to any person obtaining 
+% a copy of this software and associated documentation files (the 
+% "Software"), to deal in the Software with restriction for its use for 
+% research purpose only, subject to the following conditions:
+%
+% The above copyright notice and this permission notice shall be included
+% in all copies or substantial portions of the Software.
+%
+% The Software is provided "as is", without warranty of any kind.
+%
+% Please cite the following work if this program is used:
+% Mahmoud Afifi and Michael S. Brown. Sensor Independent Illumination 
+% Estimation for DNN Models. In BMVC, 2019
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+
 classdef AngularLossRegression < nnet.layer.RegressionLayer
 
 
@@ -20,19 +41,17 @@ classdef AngularLossRegression < nnet.layer.RegressionLayer
             %%Output:
             % loss: angular error between each vector in Y and T
             %%
-            L = length(T(:))/3; %Get number of mini-batches
-            cos_angles = zeros(1,1,1,L,'like',Y); % cos(angles) between 
-            % vectors in Y and T
+
+            Y = squeeze(Y)';
+            T = squeeze(T)';
+            t_norm =sqrt(sum(T.^2,2));
+            y_norm = sqrt(sum(Y.^2,2));
+            cosSim=sum(Y.*T,2)./(y_norm.*t_norm + 10^-4);
+            cosSim(cosSim>1)=1;
+            angles=180/pi * acos_(cosSim);
             
-            for i = 1 : L %For each mini-batch, do
-                t = reshape(T(:,:,:,i),[3,1]); %current ground truth vector
-                y = reshape(Y(:,:,:,i),[3,1]); %current prediction
-                cos_angles (i) = sum(y.*t)/(norm(t) * norm(y)); %compute 
-                %cosine similarity between y and y
-            end
+            loss = mean(angles); %final loss
             
-            cos_angles(cos_angles>1)=1; %trim any cos(angle) > 1
-            loss = mean(180/pi * acos(cos_angles)); %final loss
         end
         
         function dLdY = backwardLoss(layer, Y, T)
