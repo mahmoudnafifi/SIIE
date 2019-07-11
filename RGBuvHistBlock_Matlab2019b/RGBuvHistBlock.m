@@ -31,8 +31,8 @@
 %% Examples
 %%%%%%%%%%%%
 %%1- Create RGB-uv histogram block with leranable parameters (C & sigma)
-%C = [rand rand rand] + 1; %scale
-%sigma = max([rand rand rand],0.5); %fall-off factor
+%C = max([rand rand rand], 2) ; %scale
+%sigma = max([rand rand rand],0.6); %fall-off factor
 %learnable = 1; %histBlock with learnable parameters
 %inputImageSize = 151;
 %histogramOutSize = 61;
