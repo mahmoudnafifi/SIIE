@@ -1,8 +1,8 @@
 %% RGBuvHistBlock
-%Adding a histogram RGB-uv block to a network. There are two options: 1) a
-%histogram block with 2 learnable parameters that control the histogram
-%generation process and 2) a histogram block without learnable parameters.
- 
+%Create a histogram RGB-uv block to plugin it into a CNN model. There are
+%two options: 1) a histogram block with 2 learnable parameters that control 
+%the histogram generation process and 2) a histogram block without 
+%learnable parameters.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Copyright (c) 2019 Mahmoud Afifi
@@ -25,9 +25,6 @@
 % 2- Mahmoud Afifi and Michael S. Brown. Sensor Independent Illumination 
 % Estimation for DNN Models. In BMVC, 2019
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
 
 %% Examples
 %%%%%%%%%%%%
@@ -60,7 +57,9 @@
 %       ...
 %       outLayer];
 
-%%      
+%%    
+
+  
 classdef RGBuvHistBlock < nnet.layer.Layer
     
     properties
