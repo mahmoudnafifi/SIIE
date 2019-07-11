@@ -7,7 +7,7 @@
 
 
 ### Prerequisite
-[Matlab](https://www.mathworks.com/downloads/) 2018b or 2019a.
+[Matlab](https://www.mathworks.com/downloads/) 2018b or 2019a (the RGB-uv histogram block is now provided for Matlab 2018b, 2019a, 2019b or higher).
 
 ### Quick start
 Run `install_.m`, then run `demo.m` to test our trained models. In `demo.m`, you can change the `model_name` and `image_name` variables based on the seleced trained model and input image filename. You can test any of our trained models located in `models` directory. Each model was trained using different camera sensors, as discussed in the [paper](http://cvil.eecs.yorku.ca/projects/public_html/siie/files/SIIE.pdf). Each model is named based on the validation set used during the training (for example, the model `trained_model_wo_CUBE+_CanonEOS550D.mat` was trained using all raw-RGB linear images from <a href="https://cvil.eecs.yorku.ca/projects/public_html/illuminant/illuminant.html">NUS</a> and <a href="https://www.cs.sfu.ca/~colour/data/shi_gehler/">Gehler-Shi</a> datasets without including any example from the `CanonEOS550D` camera in <a href="https://ipg.fer.hr/ipg/resources/color_constancy">Cube/Cube+</a> datasets). The input image file <b><i>must</i></b> contains the image raw-RGB values after applying the black/saturation level-based normalization. This is very important since all trained networks expect to get <b><i>uint16</i></b> black/saturation level-based normalized input images.
@@ -30,9 +30,11 @@ In the given demo, we show the raw-RGB image after white-balancing and scaling i
 Currently, the training code is not publicly available and will be released soon.
 
 #### How to integrate the RGB-*uv* histogram block into my network?
-Please check examples given in `RGBuvHistBlock/add_RGB_uv_hist.m`. If you will use the RGB-*uv* histogram block for sRGB images (e.g., JPEG images), you may need to tune the initalization of the scale and fall-ff parameters for better results with sRGB images -- the current intalization was used to work with linear raw-RGB images which are much darker than sRGB images. To tune these parameters, please change the initalization of the scale parameter `C` in `scaleLayer.m` (line 39) and the fall-off factor `sigma` in `ExponentialKernelLayer.m` (line 43). The files `scaleLayer.m` and `ExponentialKernelLayer.m` are located in `RGBuvHistBlock` directory. You can use the `predict` function in `histOutLayer.m` function for debugging.
+If you use Matlab 2018b or 2019a, please check examples given in `RGBuvHistBlock/add_RGB_uv_hist.m`. For Matlab 2019b or higher, please check the `RGBuvHistBlock_Matlab2019b`directory (recommended). If you will use the RGB-*uv* histogram block for sRGB images (e.g., JPEG images), you may need to tune the initalization of the scale and fall-ff parameters for better results with sRGB images -- the current intalization was used to work with linear raw-RGB images which are much darker than sRGB images. To tune these parameters in the Matlab 2018b/2019a version, please change the initalization of the scale parameter `C` in `scaleLayer.m` (line 39) and the fall-off factor `sigma` in `ExponentialKernelLayer.m` (line 43). The files `scaleLayer.m` and `ExponentialKernelLayer.m` are located in `RGBuvHistBlock` directory. You can use the `predict` function in `histOutLayer.m` function for debugging. To tune the scale/fall-off parameters for Matlab 2019b version, see the examples in `RGBuvHistBlock.m` located in the `RGBuvHistBlock_Matlab2019b` directory.
 
-#### Note: The code was tested on Matlab 2018b and 2019a. It is expected to have some errors if you run Matlab 2019b or higher, as there are many updates in the nnet.layer.Layer class starting from Matlab 2019b. We will provide a source code compatible for Matlab 2019b or higher soon.
+ 
+
+#### Note: The models were tested on Matlab 2018b and 2019a. It is expected to have some errors if you run Matlab 2019b or higher, as there are many updates in the nnet.layer.Layer class starting from Matlab 2019b. We will provide a source code compatible for Matlab 2019b or higher soon.
 
 ### [Project page](http://cvil.eecs.yorku.ca/projects/public_html/siie/index.html)
 
