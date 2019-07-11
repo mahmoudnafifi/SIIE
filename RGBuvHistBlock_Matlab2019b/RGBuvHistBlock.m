@@ -1,4 +1,3 @@
-%% RGBuvHistBlock
 %Create a histogram RGB-uv block to plugin it into a CNN model. There are
 %two options: 1) a histogram block with 2 learnable parameters that control 
 %the histogram generation process and 2) a histogram block without 
@@ -26,15 +25,16 @@
 % Estimation for DNN Models. In BMVC, 2019
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+
+
 %% Examples
 %%%%%%%%%%%%
 %%1- Create RGB-uv histogram block with leranable parameters (C & sigma)
-%C = 1 + rand; %scale
-%sigma = 0.25 + rand; %fall-off factor
 %learnable = 1; %histBlock with learnable parameters
 %inputImageSize = 151;
 %histogramOutSize = 61;
-%histBlock = RGBuvHistBlock('HistBlock', inputImageSize, histogramOutSize, C, sigma, learnable); 
+%histBlock = RGBuvHistBlock('HistBlock',inputImageSize,histogramOutSize,C,sigma,learnable); 
 
 %%2- Create RGB-uv histogram block without leranable parameters 
 %C = 100; %static scale factor
@@ -57,9 +57,7 @@
 %       ...
 %       outLayer];
 
-%%    
-
-  
+%%      
 classdef RGBuvHistBlock < nnet.layer.Layer
     
     properties
@@ -70,8 +68,8 @@ classdef RGBuvHistBlock < nnet.layer.Layer
     end
     
     properties (Learnable)
-        C; %if w learnable param, C is the learnable scale
-        sigma; %sigma is the learnable fall-off factor
+        C; %if with learnable param, C is the learnable scale vector
+        sigma; %sigma is the learnable fall-off factor vector
     end
     
     methods
@@ -113,24 +111,24 @@ classdef RGBuvHistBlock < nnet.layer.Layer
                     diff_u=abs(Iu-A);
                     diff_v=abs(Iv-A);
                     if layer.learnable == 1
-                        diff_u=exp(-(reshape((reshape(diff_u,[],1).^2),[],size(A,2))/(layer.sigma.^2+eps)));
-                        diff_v=exp(-(reshape((reshape(diff_v,[],1).^2),[],size(A,2))/(layer.sigma.^2+eps)));
+                        diff_u=exp(-(reshape((reshape(diff_u,[],1).^2),[],size(A,2))/(layer.sigma(i).^2+eps)));
+                        diff_v=exp(-(reshape((reshape(diff_v,[],1).^2),[],size(A,2))/(layer.sigma(i).^2+eps)));
                     else
                         diff_u=(reshape((reshape(diff_u,[],1)<=eps_/2),[],size(A,2)));
                         diff_v=(reshape((reshape(diff_v,[],1)<=eps_/2),[],size(A,2)));
                     end     
                     hist(:,:,i)=(Iy.*double(diff_u))'*double(diff_v);
                     if layer.learnable == 1
-                        hist(:,:,i)=sqrt(hist(:,:,i));
+                        hist(:,:,i)=sqrt(hist(:,:,i)) .* layer.C(i);
                     else
                         hist(:,:,i)=sqrt(hist(:,:,i)/(size(I,1)));
                     end
                 end
-                if layer.learnable == 1
-                    Z(:,:,:,l) = hist .* layer.C;
-                else
+                if layer.learnable == 0
                     Z(:,:,:,l) = hist .* layer.C_;
-                end  
+                else
+                    Z(:,:,:,l)= hist;
+                end
             end
         end
     end
