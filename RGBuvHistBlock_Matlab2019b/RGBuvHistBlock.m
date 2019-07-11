@@ -30,7 +30,7 @@
 %%%%%%%%%%%%
 %%1- Create RGB-uv histogram block with leranable parameters (C & sigma)
 %C = 1 + rand; %scale
-%sigma = 0.5 + rand; %fall-off factor
+%sigma = 0.25 + rand; %fall-off factor
 %learnable = 1; %histBlock with learnable parameters
 %inputImageSize = 151;
 %histogramOutSize = 61;
