@@ -34,7 +34,7 @@
 %learnable = 1; %histBlock with learnable parameters
 %inputImageSize = 151;
 %histogramOutSize = 61;
-%histBlock = RGBuvHistBlock('HistBlock',inputImageSize,histogramOutSize,C,sigma,learnable); 
+%histBlock = RGBuvHistBlock('HistBlock', inputImageSize, histogramOutSize, C, sigma, learnable); 
 
 %%2- Create RGB-uv histogram block without leranable parameters 
 %C = 100; %static scale factor
