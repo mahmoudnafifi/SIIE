@@ -1,17 +1,78 @@
+%% RGBuvHistBlock
+%Adding a histogram RGB-uv block to a network. There are two options: 1) a
+%histogram block with 2 learnable parameters that control the histogram
+%generation process and 2) a histogram block without learnable parameters.
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Copyright (c) 2019 Mahmoud Afifi
+% York University, Canada
+% Email: mafifi@eecs.yorku.ca - m.3afifi@gmail.com
+% Permission is hereby granted, free of charge, to any person obtaining 
+% a copy of this software and associated documentation files (the 
+% "Software"), to deal in the Software with restriction for its use for 
+% research purpose only, subject to the following conditions:
+%
+% The above copyright notice and this permission notice shall be included
+% in all copies or substantial portions of the Software.
+%
+% The Software is provided "as is", without warranty of any kind.
+%
+% Please cite the following work if this program is used:
+% 1- Mahmoud Afifi, Brian Price, Scott Cohen, and Michael S. Brown. When Color
+% Constancy Goes Wrong: Correcting Improperly White-Balanced Images. 
+% In CVPR, 2019
+% 2- Mahmoud Afifi and Michael S. Brown. Sensor Independent Illumination 
+% Estimation for DNN Models. In BMVC, 2019
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+%% Examples
+%%%%%%%%%%%%
+%%1- Create RGB-uv histogram block with leranable parameters (C & sigma)
+%C = 1 + rand; %scale
+%sigma = 0.5 + rand; %fall-off factor
+%learnable = 1; %histBlock with learnable parameters
+%inputImageSize = 151;
+%histogramOutSize = 61;
+%histBlock = RGBuvHistBlock('HistBlock',inputImageSize,histogramOutSize,C,sigma,learnable); 
+
+%%2- Create RGB-uv histogram block without leranable parameters 
+%C = 100; %static scale factor
+%sigma = []; %fall-off factor
+%learnable = 0; %no learnable parameters
+%inputImageSize = 151;
+%histogramOutSize = 61;
+%histBlock = RGBuvHistBlock('HistBlock',inputImageSize,histogramOutSize,C,sigma,learnable); 
+
+%%add the created histogram block to your network
+%inputLayer = imageInputLayer([151 151 3],'Name','input','Normalization','none');
+%conv1 = convolution2dLayer(3,64,'Name','conv1','Stride',[2,2]);
+%relu1 = reluLayer('Name','relu1');
+%.....
+%outLayer = regressionLayer('Name','outLayer');
+%Layers = [inputLayer
+%       histBlock
+%       conv1
+%       relu1
+%       ...
+%       outLayer];
+
+%%      
 classdef RGBuvHistBlock < nnet.layer.Layer
     
     properties
-        h;
-        in;
-        C_;
-        sigma_;
-        learnable;
+        h; %output histogram dimension (e.g., h=61 will create 61x61x3 hist)
+        in; %input image dimension (e.g., in=151 means input to this layer should be 151x151x3)
+        C_; %if you chose non-learnable histogram, the final histogram will be scaled by the value of C_
+        learnable; %learnable = 1 to choose the histogram block with learnable parameters.
     end
     
     properties (Learnable)
-        C;
-        sigma;
-        
+        C; %if w learnable param, C is the learnable scale
+        sigma; %sigma is the learnable fall-off factor
     end
     
     methods
@@ -37,7 +98,6 @@ classdef RGBuvHistBlock < nnet.layer.Layer
         
         
         function Z = predict(layer, X)
-            
             eps_= 6.4/layer.h;
             A=[-3.2:eps_:3.19];
             L = length(X(:))/(layer.in * layer.in * 3);
@@ -59,11 +119,10 @@ classdef RGBuvHistBlock < nnet.layer.Layer
                     else
                         diff_u=(reshape((reshape(diff_u,[],1)<=eps_/2),[],size(A,2)));
                         diff_v=(reshape((reshape(diff_v,[],1)<=eps_/2),[],size(A,2)));
-                    end
-                    
+                    end     
                     hist(:,:,i)=(Iy.*double(diff_u))'*double(diff_v);
                     if layer.learnable == 1
-                        hist(:,:,i)=sqrt(hist(:,:,i)/sum(sum(hist(:,:,i))));
+                        hist(:,:,i)=sqrt(hist(:,:,i));
                     else
                         hist(:,:,i)=sqrt(hist(:,:,i)/(size(I,1)));
                     end
@@ -72,11 +131,8 @@ classdef RGBuvHistBlock < nnet.layer.Layer
                     Z(:,:,:,l) = hist .* layer.C;
                 else
                     Z(:,:,:,l) = hist .* layer.C_;
-                end
-                
-                
+                end  
             end
-            
         end
     end
 end
