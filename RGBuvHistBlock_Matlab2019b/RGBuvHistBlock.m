@@ -30,7 +30,8 @@
 
 %% Examples
 %%%%%%%%%%%%
-%%1- Create RGB-uv histogram block with leranable parameters (C & sigma)
+%%1- Create RGB-uv histogram block with leranable parameters (C & sigma) (Ref: Mahmoud Afifi and Michael S. Brown. Sensor Independent Illumination 
+% Estimation for DNN Models. In BMVC, 2019)
 %a = -0.2;
 %b = 0.2;
 %r = (b-a).*rand(1,1) + a;
@@ -41,7 +42,8 @@
 %learnable = 1; %histBlock with learnable parameters
 %histBlock = RGBuvHistBlock('HistBlock',inputImageSize,histogramOutSize,C,sigma,learnable); 
 
-%%2- Create RGB-uv histogram block without leranable parameters 
+%%2- Create RGB-uv histogram block without leranable parameters (Ref: Mahmoud Afifi, Brian Price, Scott Cohen, and Michael S. Brown. When Color
+% Constancy Goes Wrong: Correcting Improperly White-Balanced Images. In CVPR, 2019)
 %C = 100; %static scale factor
 %sigma = []; %fall-off factor
 %learnable = 0; %no learnable parameters
