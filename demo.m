@@ -1,25 +1,18 @@
 %%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Copyright (c) 2019 Mahmoud Afifi
+% Copyright (c) 2019-present, Mahmoud Afifi
 % York University, Canada
 % Email: mafifi@eecs.yorku.ca - m.3afifi@gmail.com
-% Permission is hereby granted, free of charge, to any person obtaining 
-% a copy of this software and associated documentation files (the 
-% "Software"), to deal in the Software with restriction for its use for 
-% research purpose only, subject to the following conditions:
+% All rights reserved.
 %
-% The above copyright notice and this permission notice shall be included
-% in all copies or substantial portions of the Software.
-%
-% The Software is provided "as is", without warranty of any kind.
-%
+%%
 % Please cite the following work if this program is used:
 % Mahmoud Afifi and Michael S. Brown. Sensor Independent Illumination 
 % Estimation for DNN Models. In BMVC, 2019
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
 
-image_name = fullfile('imgs','NUS_Canon1DsMkIII_0095.png'); %image name 
+image_name = fullfile('imgs_w_normalization','Cube+_challenge_CanonEOS550D_243.png'); %image name 
 %Note: be sure that the image is in the sraw-RGB linear space and the 
 %black/saturation normalization are correctly applied to the image before 
 %using it.
@@ -39,9 +32,11 @@ est_ill =  est_ill./norm(est_ill); %make it a unit vector
 fprintf('Estimated scene illuminant =  %f, %f, %f\n',...
     est_ill(1),est_ill(2),est_ill(3)); %display the result
 
-subplot(1,3,1); imshow(I_*4); title('Input raw-RGB image'); %show input raw-RGB image (here, we scale it by 4 to aid visualization)
-subplot(1,3,2); imshow(imread('mapped.png')*4); title('mapped image');
+factor = 6; %scale factor to aid visualization
+
+subplot(1,3,1); imshow(I_*factor); title('Input raw-RGB image'); %show input raw-RGB image (here, we scale it by 4 to aid visualization)
+subplot(1,3,2); imshow(imresize(imread('mapped.png')*factor,[sz(1) sz(2)])); title('mapped image');
 subplot(1,3,3); imshow(reshape(...
-    reshape(im2double(I_),[],3)*diag(est_ill(2)./est_ill),size(I))*4);  %apply white balance correction then show the result (scaled to aid visualization)
+    reshape(im2double(I_),[],3)*diag(est_ill(2)./est_ill),sz)*factor);  %apply white balance correction then show the result (scaled to aid visualization)
 title('White-balanced raw-RGB image');
 
