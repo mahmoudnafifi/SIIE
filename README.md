@@ -30,13 +30,11 @@ First, be sure that all images are in the raw-RGB linear space and the black lev
 #### Why does the demo show faint colors compared to what shown in the paper?
 In the given demo, we show the raw-RGB image after white balancing and scaling it up by a constant factor to aid visualization. In the [paper](http://cvil.eecs.yorku.ca/projects/public_html/siie/files/0105.pdf), we used the full camera pipeline in <a href="https://karaimer.github.io/camera-pipeline/">A Software Platform for Manipulating the Camera Imaging Pipeline, ECCV'16</a> to render the image to the sRGB space with our estimated illuminant vector.
 
-#### Where can I find the training code?
-Currently, the training code is not publicly available and will be released soon.
 
 #### How to integrate the RGB-*uv* histogram block into my network?
 Please check examples given in `RGBuvHistBlock/add_RGB_uv_hist.m`. If you will use the RGB-*uv* histogram block for sRGB-rendered images (e.g., JPEG images), you may need to tune the initalization of the scale and fall-off parameters for better results with sRGB images, as the current intalization was used to work with linear raw-RGB images. To tune these parameters, you can change the initalization of the scale parameter `C` in `scaleLayer.m` (line 39) and the fall-off factor `sigma` in `ExponentialKernelLayer.m` (line 43). The files `scaleLayer.m` and `ExponentialKernelLayer.m` are located in `RGBuvHistBlock` directory. For debugging, please use the `predict` function in `histOutLayer.m`.
 
-#### Matlab 2019b (or higher)/tensorflow source code files will be available soon.
+#### Matlab 2019b (or higher)/TensorFlow source code files will be available soon.
 
 
 ### [Project page](http://cvil.eecs.yorku.ca/projects/public_html/siie/index.html)
