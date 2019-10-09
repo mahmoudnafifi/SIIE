@@ -1,8 +1,10 @@
-%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Copyright (c) 2019-present, Mahmoud Afifi
 % York University, Canada
 % Email: mafifi@eecs.yorku.ca - m.3afifi@gmail.com
+%
+% This source code is licensed under the license found in the
+% LICENSE file in the root directory of this source tree.
 % All rights reserved.
 %
 %%
@@ -11,7 +13,6 @@
 % Estimation for DNN Models. In BMVC, 2019
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%
-
 
 function lgraph = buildNet()
 
