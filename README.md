@@ -33,6 +33,7 @@ In the given demo, we show the raw-RGB image after white balancing and scaling i
 
 #### How to integrate the RGB-*uv* histogram block into my network?
 Please check examples given in `RGBuvHistBlock/add_RGB_uv_hist.m`. If you will use the RGB-*uv* histogram block for sRGB-rendered images (e.g., JPEG images), you may need to tune the initalization of the scale and fall-off parameters for better results with sRGB images, as the current intalization was used to work with linear raw-RGB images. To tune these parameters, you can change the initalization of the scale parameter `C` in `scaleLayer.m` (line 39) and the fall-off factor `sigma` in `ExponentialKernelLayer.m` (line 43). The files `scaleLayer.m` and `ExponentialKernelLayer.m` are located in `RGBuvHistBlock` directory. For debugging, please use the `predict` function in `histOutLayer.m`.
+
 For Matlab 2019b or higher, please check the `RGBuvHistBlock_Matlab2019b` directory (recommended). To tune the scale/fall-off parameters for Matlab 2019b version, see the examples in `RGBuvHistBlock.m` located in the `RGBuvHistBlock_Matlab2019b` directory.
 
 #### TensorFlow/Matlab 2019b (or higher) source code files will be available soon.
