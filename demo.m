@@ -16,7 +16,7 @@
 
 image_name = fullfile('imgs_w_normalization','Cube+_challenge_CanonEOS550D_243.png'); %image name 
 %Note: be sure that the image is in the sraw-RGB linear space and the 
-%black/saturation normalization are correctly applied to the image before 
+%black/saturation normalization is correctly applied to the image before 
 %using it.
 
 model_name = 'trained_model_wo_NUS_Canon1DsMkIII'; %trained model name
@@ -36,7 +36,7 @@ fprintf('Estimated scene illuminant =  %f, %f, %f\n',...
 
 factor = 6; %scale factor to aid visualization
 
-subplot(1,3,1); imshow(I_*factor); title('Input raw-RGB image'); %show input raw-RGB image (here, we scale it by 4 to aid visualization)
+subplot(1,3,1); imshow(I_*factor); title('Input raw-RGB image'); %show input raw-RGB image (scaled to aid visualization)
 subplot(1,3,2); imshow(imresize(imread('mapped.png')*factor,[sz(1) sz(2)])); title('mapped image');
 subplot(1,3,3); imshow(reshape(...
     reshape(im2double(I_),[],3)*diag(est_ill(2)./est_ill),sz)*factor);  %apply white balance correction then show the result (scaled to aid visualization)
