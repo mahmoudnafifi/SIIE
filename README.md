@@ -42,8 +42,21 @@ For Matlab 2019b or higher, please check the `RGBuvHistBlock_Matlab2019b` direct
 ### [Project page](http://cvil.eecs.yorku.ca/projects/public_html/siie/index.html)
 
 ### Publication
+
+If you use this code, please cite our paper:
+
+
 Mahmoud Afifi and Michael S. Brown, Sensor Independent Illumination Estimation for DNN Models, British Machine Vision Conference (BMVC), 2019.
 
 
+```
+@inproceedings{afifi2019addressingCCErrors,
+  title={Sensor Independent Illumination Estimation for DNN Models},
+  author={Afifi, Mahmoud and Brown, Michael S},
+  booktitle={British Machine Vision Conference (BMVC)},
+  pages={},
+  year={2019}
+}
+```
 
 
