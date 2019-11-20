@@ -16,6 +16,8 @@ Run `install_.m`, then run `demo.m` to test our trained models. In `demo.m`, you
 
 The input image file <b><i>must</i></b> contain the image raw-RGB values after applying the black/saturation level normalization. This is very important since all trained networks expect to get <b><i>uint16</i></b> input images after applying the black/saturation level normalization.
 
+[![View Sensor-Independent Illuminant Estimation Using Deep Learning on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/72829-sensor-independent-illuminant-estimation-using-deep-learning)
+
 ### FAQ
 #### Can I use it to correct sRGB-rendered JPEG images?
 No. Our method works with linear raw-RGB images, not camera-rendered images. To corret your sRGB-rendered images, you can check <a href="https://cvil.eecs.yorku.ca/projects/public_html/sRGB_WB_correction/index.html">When Color Constancy Goes Wrong: 
