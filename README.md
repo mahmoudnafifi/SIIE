@@ -43,6 +43,10 @@ For Matlab 2019b or higher, please check the `RGBuvHistBlock_Matlab2019b` direct
 
 ### [Project page](http://cvil.eecs.yorku.ca/projects/public_html/siie/index.html)
 
+
+This software is provided for research purposes only. A license must be obtained for any commercial applications.
+
+
 ### Publication
 
 If you use this code, please cite our paper:
