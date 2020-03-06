@@ -3,7 +3,7 @@
 <br></br><sup>1</sup>York University  <sup>2</sup>Samsung Research
 <br></br>[Project page](http://cvil.eecs.yorku.ca/projects/public_html/siie/index.html)
 
-<img src="https://drive.google.com/uc?export=view&id=1wwu-vpAl1mh8qcXqvhTpJHGlxuaam-Me" style="width: 350px; max-width: 100%; height: auto" title="Click for the larger version." />
+![BMVC_main](https://user-images.githubusercontent.com/37669469/76104974-411d4780-5fa2-11ea-93a9-b91e9da930a0.jpg)
 
 
 ### Prerequisite
