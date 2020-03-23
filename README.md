@@ -1,6 +1,6 @@
 # Sensor-Independent Illumination Estimation for DNN Models
 *[Mahmoud Afifi](https://sites.google.com/view/mafifi)*<sup>1</sup> and *[Michael S. Brown](http://www.cse.yorku.ca/~mbrown/)*<sup>1,2</sup>
-<br></br><sup>1</sup>York University &nbsp;&nbsp; <sup>2</sup>Samsung Research
+<br></br><sup>1</sup>York University &nbsp;&nbsp; <sup>2</sup>Samsung AI Center (SAIC) - Toronto
 <br></br>[Project page](http://cvil.eecs.yorku.ca/projects/public_html/siie/index.html)
 
 ![BMVC_main](https://user-images.githubusercontent.com/37669469/76104974-411d4780-5fa2-11ea-93a9-b91e9da930a0.jpg)
