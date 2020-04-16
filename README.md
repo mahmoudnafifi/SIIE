@@ -67,7 +67,7 @@ Mahmoud Afifi and Michael S. Brown, Sensor Independent Illumination Estimation f
 
 ```
 @inproceedings{afifi2019SIIE,
-  title={Sensor Independent Illumination Estimation for DNN Models},
+  title={Sensor-Independent Illumination Estimation for DNN Models},
   author={Afifi, Mahmoud and Brown, Michael S},
   booktitle={British Machine Vision Conference (BMVC)},
   pages={},
