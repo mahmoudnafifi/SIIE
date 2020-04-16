@@ -16,7 +16,7 @@
 
 Matlab_ver = '2018b'; %'2018b', '2019a', or 'higher'
 image_name = fullfile('imgs_w_normalization','Cube+_challenge_CanonEOS550D_243.png'); %image name 
-%Note: be sure that the image is in the sraw-RGB linear space and the 
+%Note: be sure that the image is in the raw-RGB linear space and the 
 %black/saturation normalization is correctly applied to the image before 
 %using it.
 model_name = 'trained_model_wo_NUS_Canon1DsMkIII'; %trained model name
