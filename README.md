@@ -27,9 +27,6 @@ The input image file <b><i>must</i></b> contain the image raw-RGB values after a
 ### PyTorch
 Soon
 
-### TensorFlow
-Soon
-
 
 ### FAQ
 #### Can I use it to correct sRGB-rendered JPEG images?
@@ -52,7 +49,6 @@ For versions 2018b and 2019a, please check examples given in `RGBuvHistBlock/add
 
 2. *PyTorch:* Soon
 
-3. *TensorFlow:* Soon
 
 ### [Project page](http://cvil.eecs.yorku.ca/projects/public_html/siie/index.html)
 
