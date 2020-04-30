@@ -7,9 +7,8 @@
 
 
 ### Prerequisite
-[Matlab](https://www.mathworks.com/downloads/) 2018b or higher (recommended)
-
-[Deep Learning Toolbox](https://www.mathworks.com/products/deep-learning.html) for Matlab 2018b or higher
+1. [Matlab](https://www.mathworks.com/downloads/) 2018b or higher (recommended)
+2. [Deep Learning Toolbox](https://www.mathworks.com/products/deep-learning.html) for Matlab 2018b or higher
 
 Or
 
