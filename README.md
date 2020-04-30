@@ -7,9 +7,23 @@
 
 
 ### Prerequisite
-[Matlab](https://www.mathworks.com/downloads/) 2018b or higher
+[Matlab](https://www.mathworks.com/downloads/) 2018b or higher (recommended)
 
 [Deep Learning Toolbox](https://www.mathworks.com/products/deep-learning.html) for Matlab 2018b or higher
+
+Or
+
+Python 3.6.10
+numpy 1.13.3
+pillow 7.0.0
+pytorch 1.4.0
+torchvision 0.5.0
+matplotlib 
+gdal 3.0.4
+
+
+The original experiments were done using Matlab 2018b. However, the provided code for Matlab 2019b or higher gives almost the same results. The PyTorch code is provided to make it easy for PyTorch users; however, there is no guarantee to get the same results. 
+
 
 ### Quick start
 
@@ -25,10 +39,19 @@ The input image file <b><i>must</i></b> contain the image raw-RGB values after a
 
 
 #### PyTorch
-Soon
+Install prerequisite libraries
 
-#### TensorFlow
-Soon
+Conda commands:
+
+`conda create -n pytorchEnv python=3.6 numpy=1.13.3 scipy
+activate pytorchEnv
+conda install -c anaconda pillow
+conda install -c conda-forge gdal
+conda install pytorch torchvision -c pytorch
+conda install -c conda-forge matplotlib`
+
+Run `demo.py`
+
 
 
 ### FAQ
@@ -48,11 +71,10 @@ In the given demo, we show raw-RGB images after white balancing and scaling it u
 
 #### How to integrate the RGB-*uv* histogram block into my network?
 1. *Matlab:*
-For versions 2018b and 2019a, please check examples given in `RGBuvHistBlock/add_RGB_uv_hist.m`. If you will use the RGB-*uv* histogram block for sRGB-rendered images (e.g., JPEG images), you may need to tune the initalization of the scale and fall-off parameters for better results with sRGB images, as the current intalization was used for linear raw-RGB images. To tune these parameters, you can change the initalization of the scale parameter `C` in `scaleLayer.m` (line 39) and the fall-off factor `sigma` in `ExponentialKernelLayer.m` (line 43). The files `scaleLayer.m` and `ExponentialKernelLayer.m` are located in `RGBuvHistBlock` directory. For debugging, please use the `predict` function in `histOutLayer.m`. For Matlab 2019b or higher (recommended), please check the `RGBuvHistBlock.m` code located in the `RGBuvHistBlock` directory to tune the scale/fall-off parameters.
+For #Matlab 2018b and 2019a#, please check examples given in `RGBuvHistBlock/add_RGB_uv_hist.m`. If you will use the RGB-*uv* histogram block for sRGB-rendered images (e.g., JPEG images), you may need to tune the initalization of the scale and fall-off parameters for better results with sRGB images, as the current intalization was used for linear raw-RGB images. To tune these parameters, you can change the initalization of the scale parameter `C` in `scaleLayer.m` (line 39) and the fall-off factor `sigma` in `ExponentialKernelLayer.m` (line 43). The files `scaleLayer.m` and `ExponentialKernelLayer.m` are located in `RGBuvHistBlock` directory. For debugging, please use the `predict` function in `histOutLayer.m`. For #Matlab 2019b or higher (recommended)#, please check the `RGBuvHistBlock.m` code located in the `RGBuvHistBlock` directory to tune the scale/fall-off parameters.
 
-2. *PyTorch:* Soon
+2. *PyTorch:* Check the `RGBuvHistBlock.py` file. We kept the same variable names to make it easy to link between the Matlab and PyTorch code
 
-3. *TensorFlow:* Soon
 
 ### [Project page](http://cvil.eecs.yorku.ca/projects/public_html/siie/index.html)
 
