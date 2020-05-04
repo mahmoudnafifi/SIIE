@@ -21,7 +21,7 @@ Or
 7. gdal 3.0.4
 
 
-The original experiments were done using Matlab 2018b. However, the provided code for Matlab 2019b or higher gives almost the same results. The PyTorch code is provided to make it easy for PyTorch users; however, there is no guarantee to get the same results. 
+The original experiments were done using Matlab 2018b. The provided code for Matlab 2019b or higher gives almost the same results. The PyTorch code is provided to make it easy for PyTorch users; however, there is no guarantee to get the same results. 
 
 
 ### Quick start
