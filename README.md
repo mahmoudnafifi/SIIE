@@ -12,10 +12,10 @@
 
 
 
-The original experiments were done using Matlab 2018b. In some higher Matlab versions, models designed in Matlab 2018b do not work. For this reason, we provide Matlab 2019b or higher which may give higher errors than the Matlab 2018b models. 
+The original experiments were done using Matlab 2018b. In some higher Matlab versions, models designed in Matlab 2018b do not work. For this reason, we provide another version of models that should work but may give higher errors than the Matlab 2018b models. 
 
 ### UPDATE
-**We highly recommend to first try out the models for Matlab 2018b, if you face a compatibility error, then try out the 'Matlab 2019b or higher' option.**
+**Strongly recommended to first try out the models for Matlab 2018b, if a compatibility error is faced, then try out the 'Matlab 2019b or higher' option.**
 
 
 
