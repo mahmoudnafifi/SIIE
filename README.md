@@ -12,13 +12,17 @@
 
 
 
-The original experiments were done using Matlab 2018b. The provided code for Matlab 2019b or higher gives almost the same results. 
+The original experiments were done using Matlab 2018b. In some higher Matlab versions, models designed in Matlab 2018b do not work. For this reason, we provide Matlab 2019b or higher which may give higher errors than the Matlab 2018b models. 
+
+### UPDATE
+**We highly recommend to first try out the models for Matlab 2018b, if you face a compatibility error, then try out the 'Matlab 2019b or higher' option.**
+
 
 
 ### Quick start
 
 #### Matlab [![View Sensor-Independent Illuminant Estimation Using Deep Learning on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/72829-sensor-independent-illuminant-estimation-using-deep-learning)
-Run `install_.m`, then run `demo.m` to test our trained models. In `demo.m`, you should select the version of Matlab by changing the value of `Matlab_ver`. The supported versions are: Matlab 2018b, Matlab 2019a, or higher. 
+Run `install_.m`, then run `demo.m` to test our trained models. In `demo.m`, you should select the version of Matlab by changing the value of `Matlab_ver`. The supported versions are: Matlab 2018b, Matlab 2019a, or higher. It is highly recommended to set `Matlab_ver` to Matlab 2018b (even if you use higher version). If you got compatability error, then try out with `Matlab_ver = 'Matlab 2019b'`.
 
 
 You can change the `model_name` and `image_name` variables to choose between our trained models and to change input image filename, respectively. You can test any of our trained models located in `models` directory. Each model was trained using different camera sensors, as discussed in our [paper](http://cvil.eecs.yorku.ca/projects/public_html/siie/files/0105.pdf). Each model is named based on the validation set used during the training (for example, the model `trained_model_wo_CUBE+_CanonEOS550D.mat` was trained using all raw-RGB linear images from <a href="https://cvil.eecs.yorku.ca/projects/public_html/illuminant/illuminant.html">NUS</a> and <a href="https://www.cs.sfu.ca/~colour/data/shi_gehler/">Gehler-Shi</a> datasets without including any example from the `CanonEOS550D` camera in <a href="https://ipg.fer.hr/ipg/resources/color_constancy">Cube/Cube+</a> datasets). 
