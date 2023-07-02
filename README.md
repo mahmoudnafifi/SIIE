@@ -5,8 +5,10 @@
 
 ![BMVC_main](https://user-images.githubusercontent.com/37669469/76104974-411d4780-5fa2-11ea-93a9-b91e9da930a0.jpg)
 
+### PyTorch
+For PyTorch implementation, please check this [Colab notebook](https://colab.research.google.com/drive/1EtYszVLgTYv5TZFSu5_y4sCWi6UMCT8Z?usp=sharing).
 
-### Prerequisite
+### Prerequisite [Matlab]
 1. [Matlab](https://www.mathworks.com/downloads/) 2018b or higher (recommended)
 2. [Deep Learning Toolbox](https://www.mathworks.com/products/deep-learning.html) for Matlab 2018b or higher
 
