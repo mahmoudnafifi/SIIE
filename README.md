@@ -16,7 +16,9 @@
 ### PyTorch
 For PyTorch implementation, please check this [Colab notebook](https://colab.research.google.com/drive/1EtYszVLgTYv5TZFSu5_y4sCWi6UMCT8Z?usp=sharing).
 
-### Prerequisite [Matlab]
+### Matlab [![View Sensor-Independent Illuminant Estimation Using Deep Learning on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/72829-sensor-independent-illuminant-estimation-using-deep-learning)
+
+#### Prerequisite
 1. [Matlab](https://www.mathworks.com/downloads/) 2018b or higher (recommended)
 2. [Deep Learning Toolbox](https://www.mathworks.com/products/deep-learning.html) for Matlab 2018b or higher
 
@@ -25,9 +27,8 @@ For PyTorch implementation, please check this [Colab notebook](https://colab.res
 The original experiments were done using Matlab 2018b. In some higher Matlab versions, models designed in Matlab 2018b do not work. For this reason, we provide another version of models that should work but may give higher errors than the Matlab 2018b models. 
 
 
-### Quick start
+#### Quick start
 
-#### Matlab [![View Sensor-Independent Illuminant Estimation Using Deep Learning on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/72829-sensor-independent-illuminant-estimation-using-deep-learning)
 Run `install_.m`, then run `demo.m` to test our trained models. In `demo.m`, you should select the version of Matlab by changing the value of `Matlab_ver`. The supported versions are: Matlab 2018b, Matlab 2019a, or higher. It is highly recommended to set `Matlab_ver` to Matlab 2018b (even if you use higher version). If you got compatability error, then try out with `Matlab_ver = 'Matlab 2019b'`.
 
 
