@@ -17,7 +17,10 @@ For PyTorch implementation, please check this [Colab notebook](https://colab.res
 The original experiments were done using Matlab 2018b. In some higher Matlab versions, models designed in Matlab 2018b do not work. For this reason, we provide another version of models that should work but may give higher errors than the Matlab 2018b models. 
 
 ### UPDATE
-**Strongly recommended to first try out the models for Matlab 2018b, if a compatibility error is faced, then try out the 'Matlab 2019b or higher' option.**
+**:fire: PyTorch implementation is now available. You can use this code to train the model on new datasets captured by various cameras/sensors and use the trained model with unseen cameras/sensors.**
+
+
+**For Matlab version, it is strongly recommended to first try out the models for Matlab 2018b, if a compatibility error is faced, then try out the 'Matlab 2019b or higher' option.**
 
 
 
