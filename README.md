@@ -5,6 +5,14 @@
 
 ![BMVC_main](https://user-images.githubusercontent.com/37669469/76104974-411d4780-5fa2-11ea-93a9-b91e9da930a0.jpg)
 
+### UPDATE
+**:fire: PyTorch implementation is now available. You can use this code to train the model on new datasets captured by various cameras/sensors and use the trained model with unseen cameras/sensors.**
+
+
+**For Matlab version, it is strongly recommended to first try out the models for Matlab 2018b, if a compatibility error is faced, then try out the 'Matlab 2019b or higher' option.**
+
+
+
 ### PyTorch
 For PyTorch implementation, please check this [Colab notebook](https://colab.research.google.com/drive/1EtYszVLgTYv5TZFSu5_y4sCWi6UMCT8Z?usp=sharing).
 
@@ -15,13 +23,6 @@ For PyTorch implementation, please check this [Colab notebook](https://colab.res
 
 
 The original experiments were done using Matlab 2018b. In some higher Matlab versions, models designed in Matlab 2018b do not work. For this reason, we provide another version of models that should work but may give higher errors than the Matlab 2018b models. 
-
-### UPDATE
-**:fire: PyTorch implementation is now available. You can use this code to train the model on new datasets captured by various cameras/sensors and use the trained model with unseen cameras/sensors.**
-
-
-**For Matlab version, it is strongly recommended to first try out the models for Matlab 2018b, if a compatibility error is faced, then try out the 'Matlab 2019b or higher' option.**
-
 
 
 ### Quick start
