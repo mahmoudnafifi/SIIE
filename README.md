@@ -14,7 +14,7 @@
 
 
 ### PyTorch
-For PyTorch implementation, please check this [Colab notebook](https://colab.research.google.com/drive/1EtYszVLgTYv5TZFSu5_y4sCWi6UMCT8Z?usp=sharing).
+For PyTorch implementation, please check this [Colab notebook](https://colab.research.google.com/drive/1EtYszVLgTYv5TZFSu5_y4sCWi6UMCT8Z?usp=sharing). SIIE trained model on the Cube+ and NUS datasets are available [here](https://drive.google.com/file/d/1JYXhxLT28jtj_Ni_O1kYn2vEvf-HZNxV/view?usp=sharing).
 
 ### Matlab [![View Sensor-Independent Illuminant Estimation Using Deep Learning on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://www.mathworks.com/matlabcentral/fileexchange/72829-sensor-independent-illuminant-estimation-using-deep-learning)
 
